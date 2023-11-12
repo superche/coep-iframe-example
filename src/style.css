@@ -1,0 +1,29 @@
+body {
+  background-color: white;
+  color: #3e3e3e;
+  font-family: Arial, sans-serif;
+  line-height: 1.5em;
+}
+
+div {
+  text-align: center;
+  padding: 50px 0px 20px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+  font-family: Impact, "HelveticaNeue-CondensedBlack", "system";
+  color: #000;
+}
+
+iframe {
+  background-color: white;
+  width: 100%;
+}
+
+code {
+  border: 1px solid #6a50c1;
+  background-color: #8368da;
+  border-radius: 5px;
+  padding: 2px 5px;
+}

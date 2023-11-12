@@ -1,0 +1,12 @@
+{
+  "name": "coep-iframe-example",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run server-a\" \"npm run server-b\"",
+    "server-a": "lite-server -c lite-server-a.config.js",
+    "server-b": "lite-server -c lite-server-b.config.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "lite-server": "^2.6.1"
+  }
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>COEP: iframe example</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>COEP: iframe example</h2>
+
+      <iframe
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        referrerpolicy="strict-origin-when-cross-origin"
+        src="http://localhost:8000/iframe.html"
+      ></iframe>
+
+      <p>
+        <code>iframe.html</code> is blocked unless it has
+        <code>Cross-Origin-Embedder-Policy</code> header with
+        <code>Cross-Origin-Resource-Policy</code> header.
+      </p>
+    </div>
+  </body>
+</html>
