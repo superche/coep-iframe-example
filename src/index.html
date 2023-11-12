@@ -6,9 +6,10 @@
   </head>
   <body>
     <div>
-      <h1>COEP: iframe example</h2>
+      <h1>COEP: iframe example</h1>
 
       <iframe
+        id="iframe"
         sandbox="allow-scripts allow-same-origin allow-forms"
         referrerpolicy="strict-origin-when-cross-origin"
         src="http://localhost:8000/iframe.html"
@@ -19,6 +20,50 @@
         <code>Cross-Origin-Embedder-Policy</code> header with
         <code>Cross-Origin-Resource-Policy</code> header.
       </p>
+
+      <p>
+        <h2>Message List From iframe</h2>
+        <p class="form">
+          <input id="input" />
+          <button onclick="onClickButton()">Post Message</button>
+        </p>
+        <ul id="message-list-container"></ul>
+      </p>
     </div>
+
+    <script>
+      // post message
+      const iframeElement = document.getElementById('iframe');
+      const inputElement = document.getElementById('input');
+
+      function onClickButton(event) {
+        const message = inputElement.value;
+        const targetOrigin = 'http://localhost:8000';
+        // TODO: wait iframe loaded
+        // iframe.addEventListener('load', () => {});
+        iframe.contentWindow.postMessage(message, targetOrigin);
+      }
+    </script>
+    <script>
+      // receive message
+      const messageListContainer = document.getElementById('message-list-container');
+
+      window.addEventListener('message', (event) => {
+        try {
+          const { source, origin, data } = event;
+          if (origin !== 'http://localhost:8000') {
+            // INFO: always check origin or source
+            return;
+          }
+
+          const item = Object.assign(document.createElement('li'), {
+            innerHTML: data,
+          });
+          messageListContainer.appendChild(item);
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
   </body>
 </html>
